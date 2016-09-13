@@ -3,11 +3,12 @@ const getRepoContributors = require("./gitReq");
 const downloadImageByURL = require("./dwnldURLtoPath")
 const fs = require("fs")
 
-if (!fs.existsSync(".env")) {
+if (!fs.existsSync(".env")) { //check for .env file and stops
     console.log(".env file not found!")
-    return
+    throw ".env file not found, please create .env with the value USR_TOKEN=-token goes here- "
 }
 
+// Prompts to be sent with type coersion, reg expression checking, and error messages for invalid input
 var prompts = {
     properties: {
         repoOwnerResult: {
@@ -38,8 +39,7 @@ prompt.start();
 
 prompt.get(prompts, (err, result) => {
     if (err) {
-        console.log("Invalid Input, try again!")
-        prompt.start();
+        throw "Invalid inputs, restart and try again please!" //stops program if user attempts to bypass inputs
     };
     var repoOwner = result.repoOwnerResult
     var repoName = result.repoNameResult

@@ -16,7 +16,7 @@ function downloadImageByURL(repoOwner, repoName, pathInput) {
                     'User-Agent': 'gimmie cause i said so! ... please?'
                 }
             }
-            if (!fs.existsSync(`${pathInput}`)) {
+            if (!fs.existsSync(`${pathInput}`)) { //check to see if directory exists, makes new directory in root of program with message if not
                 fs.mkdirSync(`${pathInput}`)
                 console.log(`I coouldnt find the path you asked for so I made one at ./${pathInput}`)
             };

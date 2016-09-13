@@ -19,7 +19,7 @@ function githubRequest(endpoint, callback) {
 function getRepoContributors(repoOwner, repoName, callback) {
 
     githubRequest(`/repos/${repoOwner}/${repoName}/contributors`, (err, response, body) => {
-        if (response.statusCode === 401) {
+        if (response.statusCode === 401) { //error code for unauthorized access attemt
             console.log("Incorrect token in .env file!")
             return
         }
