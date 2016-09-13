@@ -3,10 +3,9 @@ const request = require("request");
 const fs = require("fs");
 require("dotenv").config();
 
-var repoOwner = "lighthouse-labs" //process.argv[2];
-var repoName = "laser_shark" //process.argv[3];
-
-
+var repoOwner = process.env.repoOwner;
+var repoName = process.env.repoName;
+var pathInput = ("userpics/").replace(/\/$/, "");
 
 
 function githubRequest(endpoint, callback) {
@@ -30,11 +29,8 @@ function getRepoContributors(repoOwner, repoName, callback) {
     });
 }
 
-function downloadImageByURL(url, path) {
 
-
-}
-
+function downloadImageByURL(pathInput) {
 getRepoContributors(repoOwner, repoName, (input) => {
         input.forEach(function(cv) {
             picRequestData = {
@@ -46,13 +42,14 @@ getRepoContributors(repoOwner, repoName, (input) => {
                     'User-Agent': 'gimmie cause i said so! ... please?'
                 }
             }
-
             if (!fs.existsSync("userpics")) {
                 fs.mkdirSync("userpics")
             };
-            request(picRequestData).pipe(fs.createWriteStream(`./userpics/${cv.login}.jpg`))
+            request(picRequestData).pipe(fs.createWriteStream(`./${pathInput}/${cv.login}.jpg`))
         })
     })
+}
+
     /*
             return {
                 "name": cv.login,
