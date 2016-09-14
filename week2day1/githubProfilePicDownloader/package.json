@@ -1,0 +1,14 @@
+{
+  "name": "week2day1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "download_avatars.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^2.0.0"
+  }
+}
