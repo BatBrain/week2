@@ -18,8 +18,8 @@
         </tr>
         <% Object.keys(urls).forEach((cv) => { %>
         <tr>
-            <td> <%= cv %> </td>
-            <td><%= urls[cv] %></td>
+            <td> <%= urls[cv].shortURL %> </td>
+            <td><%= urls[cv].longURL %></td>
             <td><a href="http://localhost:8080/urls/show/<%= cv %>">edit</a></td>
             <td>
             <form method="POST" action="/urls/<%= cv %>?_method=DELETE" id="delete<%= cv %>">
